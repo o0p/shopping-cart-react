@@ -35,6 +35,8 @@ const AppProvider = ({ children }) => {
         ...state,
         clearCart,
         remove,
+        increase,
+        decrease,
       }}>
       {children}
     </AppContext.Provider>
