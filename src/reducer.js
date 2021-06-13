@@ -28,6 +28,19 @@ const reducer = (state, action) => {
       .filter((cartItem) => cartItem.amount !== 0);
     return { ...state, cart: tempCart };
   }
+  if (action.type === 'GET_TOTALS') {
+    const { total, amount } = state.cart.reduce(
+      (cartTotal, cartItem) => {
+        const { price, amount } = cartItem;
+        return cartTotal;
+      },
+      {
+        total: 0,
+        amount: 0,
+      }
+    );
+    return { ...state, total, amount };
+  }
   return state;
 };
 export default reducer;
