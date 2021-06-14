@@ -33,7 +33,13 @@ const AppProvider = ({ children }) => {
   const fetchData = async () => {
     dispatch({ type: 'LOADING' });
     const response = await fetch(url);
+    const cart = await response.json();
+    dispatch({ type: 'DISPLAY_ITESM', payload: cart });
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   useEffect(() => {
     dispatch({ type: 'GET_TOTALS' });
